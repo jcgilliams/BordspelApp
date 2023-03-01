@@ -1,0 +1,83 @@
+﻿<UserControl x:Class="BordspelApp_WPF.CollectionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BordspelApp_WPF"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DesignHeight="600" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="325"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="70"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <!--Kolom 1 : Alle Bordspellen-->
+        <StackPanel Grid.Row="0" Grid.Column="0"  Orientation="Vertical">
+            <Label x:Name="lblFilterSpel" Content="Lijst bordspellen" Margin="5 5 5 5" FontSize="20" FontWeight="UltraLight"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBox x:Name="txtFilterSpel" Width="300" materialDesign:HintAssist.Hint="Filter Spel" Margin="10 0 0 0" KeyUp="txtFilterSpel_KeyUp"/>
+                <Label Content="{materialDesign:PackIcon Kind=Filter}" VerticalAlignment="Center"></Label>
+            </StackPanel>
+        </StackPanel>
+        <!--<DataGrid x:Name="datagridSpel" AutoGenerateColumns="True" Grid.Row="1" Grid.Column="0"  >
+        </DataGrid>-->
+        <!--Enkel bepaalde kolom-->
+        <DataGrid x:Name="datagridSpel" AutoGenerateColumns="False" Grid.Row="1" Grid.Column="0" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding naam}" Header="Naam bordspel" Width="*" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!--Kolom 2 :Actiebuttons-->
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="100"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Button x:Name="btnAanpassen" Grid.Row="0" Content="{materialDesign:PackIcon Kind=Wrench}" HorizontalAlignment="Center" Background="White" Foreground="#8B0000" 
+                        BorderBrush="#8B0000" BorderThickness="1" ToolTip="Pas spel aan" Margin="5 5 5 5" Click="btnAanpassen_Click" ></Button>
+                <Button x:Name="btnVerwijderen" Grid.Row="1" Content="{materialDesign:PackIcon Kind=Delete}" HorizontalAlignment="Center" Background="White" Foreground="#8B0000" 
+                        BorderBrush="#8B0000" BorderThickness="1" ToolTip="Verwijder spel" Margin="5 5 5 5" Click="btnVerwijderen_Click" ></Button>
+                <Button x:Name="btnNieuw" Grid.Row="2" Content="{materialDesign:PackIcon Kind=Plus}" HorizontalAlignment="Center" Background="White" Foreground="#8B0000" 
+                        BorderBrush="#8B0000" BorderThickness="1" ToolTip="Maak nieuw spel" Margin="5 5 5 5" Click="btnNieuw_Click" ></Button>
+                <Button x:Name="btnInCollectie"  Grid.Row="3" Content="{materialDesign:PackIcon Kind=ArrowRight}" VerticalAlignment="Bottom" HorizontalAlignment="Center" Background="White" Foreground="#8B0000" 
+                        BorderBrush="#8B0000" BorderThickness="1" ToolTip="Zet spel in collectie" Margin="5 5 5 5" Click="btnInCollectie_Click"></Button>
+                <Button x:Name="btnUitCollectie"  Grid.Row="4" Content="{materialDesign:PackIcon Kind=ArrowLeft}"  HorizontalAlignment="Center" Background="White" Foreground="#8B0000" 
+                        BorderBrush="#8B0000" BorderThickness="1" ToolTip="Haal spel uit collectie" Margin="5 5 5 5" Click="btnUitCollectie_Click" ></Button>
+
+            </Grid>
+        </StackPanel>
+        <!--Kolom 3 :Collectie-->
+        <StackPanel Grid.Row="0" Grid.Column="2"  Orientation="Vertical">
+            <Label x:Name="lblFilterCollectie" Content="Persoonlijke collectie" Margin="5 5 5 5" FontSize="20" FontWeight="UltraLight"/>
+            <StackPanel Orientation="Horizontal" >
+                <TextBox x:Name="txtFilterCollectie" Width="300" materialDesign:HintAssist.Hint="Filter Collectie" Margin="10 0 0 0" KeyUp="txtFilterCollectie_KeyUp"/>
+                <Label Content="{materialDesign:PackIcon Kind=Filter}" VerticalAlignment="Center"></Label>
+            </StackPanel>
+        </StackPanel>
+        <!--<DataGrid x:Name="datagridCollectie" AutoGenerateColumns="True" Grid.Row="1" Grid.Column="2"  >
+        </DataGrid>-->
+        <!--Enkel bepaalde kolom-->
+        <DataGrid x:Name="datagridCollectie" AutoGenerateColumns="False" Grid.Row="1" Grid.Column="2" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Bordspel}" Header="Naam bordspel" Width="*" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!--Plaats voor validaties-->
+        <Label x:Name="lblValidatie" Content="" Grid.Row="3" Grid.ColumnSpan="3" Margin="5"></Label>
+    </Grid>
+</UserControl>

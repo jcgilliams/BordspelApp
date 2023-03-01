@@ -1,0 +1,105 @@
+﻿<UserControl x:Class="BordspelApp_WPF.BordspelView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BordspelApp_WPF"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DesignHeight="600" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+
+        </Grid.ColumnDefinitions>
+
+        <!--Kolom 1+2 : Algemene info-->
+        <Label x:Name="lblBordspelNaam" Grid.Column="0" Grid.Row="0" Content="Naam bordspel" FontSize="15" FontWeight="Bold" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtBordspelNaam" Grid.Column="1" Grid.Row="0" Padding="5 5 5 5" Margin="10,10,10,10" BorderThickness="1" BorderBrush="#8B0000"/>
+
+        <Label x:Name="lblRelease" Grid.Column="0" Grid.Row="1" Content="Releasejaar" FontSize="15" FontWeight="Bold" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtRelease" Grid.Column="1" Grid.Row="1" Padding="5 5 5 5" Margin="10,10,10,10" BorderThickness="1" BorderBrush="#8B0000"/>
+
+        <Label x:Name="lblMinSpelers" Grid.Column="0" Grid.Row="2" Content="Min Aantal Spelers" FontSize="15" FontWeight="Bold" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtMinSpelers" Grid.Column="1" Grid.Row="2" Padding="5 5 5 5" Margin="10,10,10,10" BorderThickness="1" BorderBrush="#8B0000"/>
+
+        <Label x:Name="lblMaxSpelers" Grid.Column="0" Grid.Row="3" Content="Max Aantal Spelers" FontSize="15" FontWeight="Bold" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtMaxSpelers" Grid.Column="1" Grid.Row="3" Padding="5 5 5 5" Margin="10,10,10,10" BorderThickness="1" BorderBrush="#8B0000"/>
+
+        <Label x:Name="lblMinSpeeltijd" Grid.Column="0" Grid.Row="4" Content="Min Speeltijd" FontSize="15" FontWeight="Bold" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtMinSpeeltijd" Grid.Column="1" Grid.Row="4" Padding="5 5 5 5" Margin="10,10,10,10" BorderThickness="1" BorderBrush="#8B0000"/>
+
+        <Label x:Name="lblMaxSpeeltijd" Grid.Column="0" Grid.Row="5" Content="Max Speeltijd" FontSize="15" FontWeight="Bold" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtMaxSpeeltijd" Grid.Column="1" Grid.Row="5" Padding="5 5 5 5" Margin="10,10,10,10" BorderThickness="1" BorderBrush="#8B0000"/>
+
+        <Label x:Name="lblLeeftijd" Grid.Column="0" Grid.Row="6" Content="Leeftijd" FontSize="15" FontWeight="Bold" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtLeeftijd" Grid.Column="1" Grid.Row="6" Padding="5 5 5 5" Margin="10,10,10,10" BorderThickness="1" BorderBrush="#8B0000"/>
+
+        <Label x:Name="lblBeschrijving" Grid.Column="0" Grid.Row="7" Content="Beschrijving" FontSize="15" FontWeight="Bold" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtBeschrijving" Grid.Column="1" Grid.Row="7" Grid.ColumnSpan="2" Padding="5 5 5 5" Margin="10,10,10,10" BorderThickness="1" BorderBrush="#8B0000"/>
+
+        <!--Kolom 3+4 : Tabs - ontwerper - artiest - uitgeverij-->
+        <TabControl Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="2" TabStripPlacement="Bottom"
+            Style="{StaticResource MaterialDesignNavigatilRailTabControl}"
+            Background="#8B0000"            
+            materialDesign:NavigationRailAssist.ShowSelectionBackground="True"
+            HorizontalContentAlignment="Center"
+            VerticalAlignment="Top"
+            x:Name="tabControl"
+            SelectionChanged="TabControl_SelectionChanged">
+            <TabItem x:Name="tabOntwerper" Margin="4">
+                <TabItem.Header>
+                    <StackPanel Height="auto" Width="auto">
+                        <materialDesign:PackIcon Kind="Account" Foreground="White" Width="24" Height="24" HorizontalAlignment="Center" />
+                        <TextBlock Text="Ontwerper" Foreground="White" HorizontalAlignment="Center" />
+                    </StackPanel>
+                </TabItem.Header>
+            </TabItem>
+            <TabItem x:Name="tabArtiest" Margin="4">
+                <TabItem.Header>
+                    <StackPanel Height="auto" Width="auto">
+                        <materialDesign:PackIcon Kind="AccountOutline" Foreground="White" Width="24" Height="24" HorizontalAlignment="Center" />
+                        <TextBlock Text="Artiest" Foreground="White" HorizontalAlignment="Center" />
+                    </StackPanel>
+                </TabItem.Header>
+            </TabItem>
+            <TabItem x:Name="tabUitgeverij" Margin="4">
+                <TabItem.Header>
+                    <StackPanel Height="auto" Width="auto">
+                        <materialDesign:PackIcon Kind="ArchiveOutline" Foreground="White" Width="24" Height="24" HorizontalAlignment="Center" />
+                        <TextBlock Text="Uitgeverij" Foreground="White" HorizontalAlignment="Center" />
+                    </StackPanel>
+                </TabItem.Header>
+            </TabItem>
+        </TabControl>
+        <ContentControl x:Name="ContentWindow" Grid.Row="2" Grid.Column="2" Grid.RowSpan="5" Grid.ColumnSpan="2"  Margin="10" Visibility="Hidden">
+        </ContentControl>
+
+        <!--Home-->
+        <StackPanel Grid.Column="3" Grid.Row="7" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button x:Name="btnSave" Content="{materialDesign:PackIcon Kind=ContentSave}" HorizontalAlignment="Left" Background="White" Foreground="#8B0000" 
+                        BorderBrush="#8B0000" BorderThickness="1" ToolTip="Sla nieuw spel op" Margin="5 5 5 5" Click="btnSave_Click"></Button>
+            <Button x:Name="btnUpdateSpel" Content="{materialDesign:PackIcon Kind=Wrench}" HorizontalAlignment="Left" Background="White" Foreground="#8B0000" 
+                        BorderBrush="#8B0000" BorderThickness="1" ToolTip="Pas een spel aan" Margin="5 5 5 5" Click="btnUpdateSpel_Click" ></Button>
+            <Button x:Name="btnHome" Content="{materialDesign:PackIcon Kind=Home}" HorizontalAlignment="Left" Background="White" Foreground="#8B0000" 
+                        BorderBrush="#8B0000" BorderThickness="1" Click="btnHome_Click" ToolTip="Ga terug naar collectie" Margin="5 5 5 5"></Button>
+        </StackPanel>       
+
+        <!--Plaats voor validaties-->
+        <Label x:Name="lblValidatie" Content="" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="4" Margin="5"></Label>
+    </Grid>
+</UserControl>
